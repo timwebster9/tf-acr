@@ -19,7 +19,7 @@ resource "azurerm_container_registry_task" "lemmy_nginx" {
   }
 
   docker_step {
-    dockerfile_path      = "Dockerfile"
+    dockerfile_path      = var.dockerfile
     context_path         = "https://github.com/timwebster9/nginx-lemmy#main"
     context_access_token = var.pat_token
     image_names          = ["lemmy-nginx:{{.Run.ID}}"]
