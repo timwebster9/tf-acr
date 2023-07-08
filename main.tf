@@ -27,7 +27,7 @@ resource "azurerm_container_registry_task" "lemmy_nginx" {
 
   source_trigger {
     name           = "build-lemmy-nginx"
-    events         = "commit"
+    events         = ["commit"]
     repository_url = "https://github.com/timwebster9/nginx-lemmy.git"
     source_type    = "Github"
     branch         = "main"
