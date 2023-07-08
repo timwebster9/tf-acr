@@ -7,10 +7,12 @@ resource "azurerm_container_registry" "acr" {
   name                = "897safsacr"
   resource_group_name = azurerm_resource_group.acr_rg.name
   location            = azurerm_resource_group.acr_rg.location
-  sku                 = "Basic"
+  sku                 = "Standard"
   admin_enabled       = false
+  anonymous_pull_enabled = true
 }
 
+/*
 resource "azurerm_user_assigned_identity" "acr_mi" {
   location            = azurerm_resource_group.acr_rg.location
   resource_group_name = azurerm_resource_group.acr_rg.name
@@ -22,6 +24,7 @@ resource "azurerm_role_assignment" "acr_mi_role_assignment" {
   role_definition_name = "AcrPull"
   principal_id         = azurerm_user_assigned_identity.acr_mi.principal_id
 }
+*/
 
 resource "azurerm_container_registry_task" "lemmy_nginx" {
   name                  = "build-lemmy-nginx"
