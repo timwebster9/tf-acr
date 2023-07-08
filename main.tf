@@ -80,4 +80,10 @@ resource "azurerm_container_registry_task" "lemmy" {
       token_type = "PAT"
     }
   }
+
+  timer_trigger {
+    name = "build-lemmy-cron"
+    schedule = "0 0 5 31 2 ?"
+    enabled = false
+  }
 }
