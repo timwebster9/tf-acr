@@ -31,5 +31,10 @@ resource "azurerm_container_registry_task" "lemmy_nginx" {
     repository_url = "https://github.com/timwebster9/nginx-lemmy.git"
     source_type    = "Github"
     branch         = "main"
+
+    authentication {
+      token = var.pat_token
+      token_type = "PAT"
+    }
   }
 }
