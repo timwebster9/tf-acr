@@ -4,6 +4,6 @@ variable "location" {
 }
 
 variable "pat_token" {
-  type = string
-  default = ""
+  type      = string
+  sensitive = true
 }
