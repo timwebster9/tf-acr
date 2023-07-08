@@ -83,7 +83,7 @@ resource "azurerm_container_registry_task" "lemmy" {
 
   timer_trigger {
     name = "build-lemmy-cron"
-    schedule = "0 0 5 31 2 ?"
+    schedule = "30 9 * * 1-5"
     enabled = false
   }
 }
