@@ -25,13 +25,11 @@ resource "azurerm_container_registry_task" "lemmy_nginx" {
     image_names          = ["lemmy-nginx:{{.Run.ID}}"]
   }
 
-/*
   source_trigger {
     name           = "build-lemmy-nginx"
     events         = "commit"
     repository_url = "https://github.com/timwebster9/nginx-lemmy.git"
     source_type    = "Github"
-    image_names          = ["lemmy-nginx:{{.Run.ID}}"]
+    branch         = "main"
   }
-*/
 }
