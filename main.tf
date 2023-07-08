@@ -20,7 +20,7 @@ resource "azurerm_user_assigned_identity" "acr_mi" {
 resource "azurerm_role_assignment" "acr_mi_role_assignment" {
   scope                = azurerm_container_registry.acr.id
   role_definition_name = "AcrPull"
-  principal_id         = azurerm_user_assigned_identity.acr_mi.object_id
+  principal_id         = azurerm_user_assigned_identity.acr_mi.principal_id
 }
 
 resource "azurerm_container_registry_task" "lemmy_nginx" {
