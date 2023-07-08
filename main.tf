@@ -17,9 +17,21 @@ resource "azurerm_container_registry_task" "lemmy_nginx" {
   platform {
     os = "Linux"
   }
+
   docker_step {
     dockerfile_path      = "Dockerfile"
-    context_path         = "https://github.com/timwebster9/nginx-lemmy"
+    context_path         = "https://github.com/timwebster9/nginx-lemmy#main"
+    context_access_token = var.pat_token
     image_names          = ["lemmy-nginx:{{.Run.ID}}"]
   }
+
+/*
+  source_trigger {
+    name           = "build-lemmy-nginx"
+    events         = "commit"
+    repository_url = "https://github.com/timwebster9/nginx-lemmy.git"
+    source_type    = "Github"
+    image_names          = ["lemmy-nginx:{{.Run.ID}}"]
+  }
+*/
 }
